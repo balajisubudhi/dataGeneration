@@ -21,6 +21,9 @@ newDataFrame = data.frame(0)
 function(input, output) {
   #create the dataset
     createDataFrame = reactive({
+		validate(
+			need(input$noRows != "", "Please enter no of rows and generate a column")
+		)
         if(input$datatype == "numeric"){
           if(input$distribution == "normal"){
             dataFrame = data.frame(rnorm(input$noRows, 
